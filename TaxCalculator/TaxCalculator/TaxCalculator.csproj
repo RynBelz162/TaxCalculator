@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Microsoft.Extensions.DependencyInjection" />
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Refractored.MvvmHelpers" />
+    <None Remove="Models\" />
+    <None Remove="Http\" />
+    <None Remove="Microsoft.Extensions.Http" />
+    <None Remove="Models\TaxJar\" />
+    <None Remove="System.Text.Json" />
+    <None Remove="Microsoft.Extensions.Configuration.Json" />
+    <None Remove="Microsoft.Extensions.Configuration" />
+    <None Remove="Microsoft.Extensions.Configuration.Binder" />
+    <None Remove="appsettings.json" />
+    <None Remove="Xamarin.CommunityToolkit" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Http\" />
+    <Folder Include="Models\TaxJar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.json" />
+  </ItemGroup>
+</Project>
