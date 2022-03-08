@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaxCalculator.Http;
+using TaxCalculator.Models.TaxJar;
 using TaxCalculator.Services;
 using TaxCalculator.ViewModels;
-using TaxCalculator.Http;
-using Microsoft.Extensions.Configuration;
-using TaxCalculator.Models.TaxJar;
-using System.Reflection;
 
 namespace TaxCalculator
 {
@@ -27,13 +27,15 @@ namespace TaxCalculator
         private static void RegisterServices(ServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddTransient<ITaxService, TaxService>();
+                .AddTransient<ITaxService, TaxService>()
+                .AddTransient<IAlertService, AlertService>();
         }
 
         private static void RegisterVms(ServiceCollection serviceCollection)
         {
             serviceCollection
-                    .AddTransient<MainVm>();
+                .AddTransient<LocationTaxVm>()
+                .AddTransient<OrderTaxVm>();
         }
 
         private static void RegisterHttpClients(ServiceCollection serviceCollection)

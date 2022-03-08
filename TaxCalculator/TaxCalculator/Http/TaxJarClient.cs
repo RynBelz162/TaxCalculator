@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TaxCalculator.Models.TaxJar;
 
@@ -12,6 +13,7 @@ namespace TaxCalculator.Http
     public class TaxJarClient : ITaxJarClient
     {
         private readonly HttpClient _httpClient;
+        private JsonSerializerOptions _jsonOptions => new() { NumberHandling = JsonNumberHandling.AllowReadingFromString, PropertyNameCaseInsensitive = true };
 
         public TaxJarClient(HttpClient httpClient, TaxJarSettings taxJarSettings)
         {
@@ -21,13 +23,14 @@ namespace TaxCalculator.Http
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", taxJarSettings.ApiKey);
         }
 
-        public async Task<TaxRateResult> GetLocationTaxRates(string zip)
+        public async Task<TaxRateResult> GetLocationTaxRate(string zip)
         {
             var httpRequest = await _httpClient.GetAsync($"rates/{zip}");
             httpRequest.EnsureSuccessStatusCode();
 
             var rawResult = await httpRequest.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<TaxRateResult>(rawResult);
+
+            return JsonSerializer.Deserialize<TaxRateResult>(rawResult, _jsonOptions);
         }
 
         public async Task<OrderResponse> CalculateOrderTax(OrderRequest request)
@@ -37,12 +40,13 @@ namespace TaxCalculator.Http
             httpRequest.EnsureSuccessStatusCode();
 
             var rawResult = await httpRequest.Content.ReadAsStringAsync();
+
             return JsonSerializer.Deserialize<OrderResponse>(rawResult);
         }
 
-        private static StringContent CreateContent<T>(T content)
+        private StringContent CreateContent<T>(T content)
         {
-            var myContent = JsonSerializer.Serialize(content);
+            var myContent = JsonSerializer.Serialize(content, _jsonOptions);
             return new StringContent(myContent, Encoding.UTF8, MediaTypeNames.Application.Json); 
         }
     }

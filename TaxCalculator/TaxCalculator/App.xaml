@@ -4,5 +4,47 @@
              x:Class="TaxCalculator.App">
     <Application.Resources>
 
+        <!--Colors-->
+        <Color x:Key="Primary">#2e7d32</Color>
+        <Color x:Key="PrimaryDark">#005005</Color>
+        <Color x:Key="Accent">#ffeb3b</Color>
+
+        <!--Styles-->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                <Setter Property="TextColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White" />
+                                <Setter Property="BackgroundColor" Value="LightGray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Card" TargetType="Frame">
+            <Setter Property="BorderColor" Value="Gray" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="20" />
+            <Setter Property="Padding" Value="20" />
+        </Style>
+
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red"/>
+        </Style>
+
+        <!--Font Awesome Icons-->
+        <x:String x:Key="Percent">&#x25;</x:String>
+        <x:String x:Key="DollarSign">&#x24;</x:String>
+
     </Application.Resources>
 </Application>

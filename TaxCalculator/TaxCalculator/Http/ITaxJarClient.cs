@@ -5,7 +5,7 @@ namespace TaxCalculator.Http
 {
     public interface ITaxJarClient
     {
-        Task<TaxRateResult> GetLocationTaxRates(string zip);
+        Task<TaxRateResult> GetLocationTaxRate(string zip);
         Task<OrderResponse> CalculateOrderTax(OrderRequest request);
     }
 }

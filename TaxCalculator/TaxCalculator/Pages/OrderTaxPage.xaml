@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:TaxCalculator.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    x:Class="TaxCalculator.Pages.OrderTaxPage"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodels:OrderTaxVm">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <xct:NumericValidationBehavior x:Key="NumericValidationBehavior" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+
+        <StackLayout Orientation="Vertical">
+
+            <Frame Style="{StaticResource Card}">
+
+                <StackLayout>
+
+                    <Label Text="Calculate the Tax for an Order!" FontSize="Large" />
+
+                    <Label Text="To ZIP Code" />
+
+                    <Entry Text="{Binding ToZip}"
+                           MaxLength="5"
+                           ClearButtonVisibility="WhileEditing"
+                           Keyboard="Numeric"
+                           ReturnType="Next"/>
+
+                    <Label Text="To State" />
+
+                    <Picker Title="Pick a State"
+                            SelectedItem="{Binding ToState}" >
+                        <Picker.Items>
+                            <x:String>AL</x:String>
+                            <x:String>AK</x:String>
+                            <x:String>AS</x:String>
+                            <x:String>AZ</x:String>
+                            <x:String>AR</x:String>
+                            <x:String>CA</x:String>
+                            <x:String>CO</x:String>
+                            <x:String>CT</x:String>
+                            <x:String>DE</x:String>
+                            <x:String>DC</x:String>
+                            <x:String>FM</x:String>
+                            <x:String>FL</x:String>
+                            <x:String>GA</x:String>
+                            <x:String>GU</x:String>
+                            <x:String>HI</x:String>
+                            <x:String>ID</x:String>
+                            <x:String>IL</x:String>
+                            <x:String>IN</x:String>
+                            <x:String>IA</x:String>
+                            <x:String>KS</x:String>
+                            <x:String>KY</x:String>
+                            <x:String>LA</x:String>
+                            <x:String>ME</x:String>
+                            <x:String>MH</x:String>
+                            <x:String>MD</x:String>
+                            <x:String>MA</x:String>
+                            <x:String>MI</x:String>
+                            <x:String>MN</x:String>
+                            <x:String>MS</x:String>
+                            <x:String>MO</x:String>
+                            <x:String>MT</x:String>
+                            <x:String>NE</x:String>
+                            <x:String>NV</x:String>
+                            <x:String>NJ</x:String>
+                            <x:String>NM</x:String>
+                            <x:String>NY</x:String>
+                            <x:String>NC</x:String>
+                            <x:String>ND</x:String>
+                            <x:String>MP</x:String>
+                            <x:String>OH</x:String>
+                            <x:String>OK</x:String>
+                            <x:String>OR</x:String>
+                            <x:String>PW</x:String>
+                            <x:String>PA</x:String>
+                            <x:String>PR</x:String>
+                            <x:String>RI</x:String>
+                            <x:String>SC</x:String>
+                            <x:String>SD</x:String>
+                            <x:String>TN</x:String>
+                            <x:String>TX</x:String>
+                            <x:String>UT</x:String>
+                            <x:String>VT</x:String>
+                            <x:String>VI</x:String>
+                            <x:String>VA</x:String>
+                            <x:String>WA</x:String>
+                            <x:String>WV</x:String>
+                            <x:String>WI</x:String>
+                            <x:String>WY</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Text="From ZIP Code" />
+
+                    <Entry Text="{Binding FromZip}"
+                           MaxLength="5"
+                           ClearButtonVisibility="WhileEditing"
+                           Keyboard="Numeric"
+                           ReturnType="Next"/>
+
+                    <Label Text="From State" />
+
+                    <Picker Title="Pick a State"
+                            SelectedItem="{Binding FromState}" >
+                        <Picker.Items>
+                            <x:String>AL</x:String>
+                            <x:String>AK</x:String>
+                            <x:String>AS</x:String>
+                            <x:String>AZ</x:String>
+                            <x:String>AR</x:String>
+                            <x:String>CA</x:String>
+                            <x:String>CO</x:String>
+                            <x:String>CT</x:String>
+                            <x:String>DE</x:String>
+                            <x:String>DC</x:String>
+                            <x:String>FM</x:String>
+                            <x:String>FL</x:String>
+                            <x:String>GA</x:String>
+                            <x:String>GU</x:String>
+                            <x:String>HI</x:String>
+                            <x:String>ID</x:String>
+                            <x:String>IL</x:String>
+                            <x:String>IN</x:String>
+                            <x:String>IA</x:String>
+                            <x:String>KS</x:String>
+                            <x:String>KY</x:String>
+                            <x:String>LA</x:String>
+                            <x:String>ME</x:String>
+                            <x:String>MH</x:String>
+                            <x:String>MD</x:String>
+                            <x:String>MA</x:String>
+                            <x:String>MI</x:String>
+                            <x:String>MN</x:String>
+                            <x:String>MS</x:String>
+                            <x:String>MO</x:String>
+                            <x:String>MT</x:String>
+                            <x:String>NE</x:String>
+                            <x:String>NV</x:String>
+                            <x:String>NJ</x:String>
+                            <x:String>NM</x:String>
+                            <x:String>NY</x:String>
+                            <x:String>NC</x:String>
+                            <x:String>ND</x:String>
+                            <x:String>MP</x:String>
+                            <x:String>OH</x:String>
+                            <x:String>OK</x:String>
+                            <x:String>OR</x:String>
+                            <x:String>PW</x:String>
+                            <x:String>PA</x:String>
+                            <x:String>PR</x:String>
+                            <x:String>RI</x:String>
+                            <x:String>SC</x:String>
+                            <x:String>SD</x:String>
+                            <x:String>TN</x:String>
+                            <x:String>TX</x:String>
+                            <x:String>UT</x:String>
+                            <x:String>VT</x:String>
+                            <x:String>VI</x:String>
+                            <x:String>VA</x:String>
+                            <x:String>WA</x:String>
+                            <x:String>WV</x:String>
+                            <x:String>WI</x:String>
+                            <x:String>WY</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Text="Amount" />
+
+                    <Entry Text="{Binding Amount}"
+                           ClearButtonVisibility="WhileEditing"
+                           Keyboard="Numeric"
+                           ReturnType="Next">
+
+                        <Entry.Behaviors>
+                            <xct:NumericValidationBehavior IsValid="{Binding IsValidAmount}"
+                                                           InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                           MinimumValue="0.0"
+                                                           MaximumDecimalPlaces="2"/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                
+                    <Label Text="Shipping" />
+
+                    <Entry Text="{Binding Shipping}"
+                           ClearButtonVisibility="WhileEditing"
+                           Keyboard="Numeric"
+                           ReturnType="Next">
+
+                        <Entry.Behaviors>
+                            <xct:NumericValidationBehavior IsValid="{Binding IsValidShipping}"
+                                                           InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                                           MinimumValue="0.0"
+                                                           MaximumDecimalPlaces="2"/>
+                        </Entry.Behaviors>
+
+                    </Entry>
+
+                    <Button Style="{StaticResource PrimaryButton}"
+                            Text="Get Tax"
+                            Command="{Binding CalculateOrderTax}"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" />
+
+                    <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                       Color="{StaticResource Primary}"
+                                       IsRunning="{Binding IsBusy}"/>
+
+                </StackLayout>
+
+            </Frame>
+
+            <StackLayout Orientation="Vertical" Margin="20, 0">
+
+                <Label Text="Tax to Collect" FontSize="Header" TextColor="{StaticResource Primary}" />
+                <Label Text="{Binding AmountToCollect}" FontSize="Medium" />
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

@@ -25,6 +25,8 @@ namespace TaxCalculator.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(46, 125, 50);
+
             return base.FinishedLaunching(app, options);
         }
     }

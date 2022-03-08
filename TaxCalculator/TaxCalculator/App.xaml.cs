@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using TaxCalculator.Pages;
+using Xamarin.Forms;
 
 namespace TaxCalculator
 {

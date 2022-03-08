@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:pages="clr-namespace:TaxCalculator.Pages"
+            x:Class="TaxCalculator.Pages.MainPage"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            ios:Page.UseSafeArea="true">
+
+    <TabbedPage.Children>
+
+        <pages:LocationTaxPage Title="Rates">
+            <pages:LocationTaxPage.IconImageSource>
+                <FontImageSource FontFamily="FA-S" Glyph="{StaticResource Percent}" />
+            </pages:LocationTaxPage.IconImageSource>
+        </pages:LocationTaxPage>
+
+        <pages:OrderTaxPage Title="Orders">
+            <pages:OrderTaxPage.IconImageSource>
+                <FontImageSource FontFamily="FA-S" Glyph="{StaticResource DollarSign}" />
+            </pages:OrderTaxPage.IconImageSource>
+        </pages:OrderTaxPage>
+
+    </TabbedPage.Children>
+
+</TabbedPage>
+
+ 

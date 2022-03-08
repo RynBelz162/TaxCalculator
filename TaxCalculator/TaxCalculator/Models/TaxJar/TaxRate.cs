@@ -2,29 +2,29 @@
 
 namespace TaxCalculator.Models.TaxJar
 {
-    public record TaxRate 
-    (
-        string Zip,
+    public record TaxRate
+    {
+        public string Zip { get; init; }
 
-        string State,
+        public string State { get; init; }
 
-        [property:JsonPropertyName("state_rate")]
-        decimal StateRate,
+        [JsonPropertyName("state_rate")]
+        public decimal StateRate { get; init; }
 
-        string County,
+        public string County { get; init; }
 
-        [property:JsonPropertyName("county_rate")]
-        decimal CountyRate,
+        [JsonPropertyName("county_rate")]
+        public decimal CountyRate { get; init; }
 
-        string City,
+        public string City { get; init; }
 
-        [property:JsonPropertyName("city_rate")]
-        decimal CityRate,
+        [JsonPropertyName("city_rate")]
+        public decimal CityRate { get; init; }
 
-        [property:JsonPropertyName("combined_district_rate")]
-        decimal CombinedDistrictRate,
+        [JsonPropertyName("combined_district_rate")]
+        public decimal CombinedDistrictRate { get; init; }
 
-        [property:JsonPropertyName("combined_rate")]
-        decimal CombinedRate
-    ) { }
+        [JsonPropertyName("combined_rate")]
+        public decimal CombinedRate { get; init; }
+    }
 }
