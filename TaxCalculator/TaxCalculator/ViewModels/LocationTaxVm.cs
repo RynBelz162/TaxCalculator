@@ -65,12 +65,9 @@ namespace TaxCalculator.ViewModels
 
             try
             {
-                var (city, rate) = await _taxService.GetRateForZip(_zip)
-                    .ConfigureAwait(false);
-
+                var (city, rate) = await _taxService.GetRateForZip(_zip);
 
                 City = string.IsNullOrWhiteSpace(city) ? "Unknown" : city;
-
                 Rate = $"{rate * 100} %";
             }
             catch

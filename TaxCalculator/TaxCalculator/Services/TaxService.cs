@@ -27,13 +27,17 @@ namespace TaxCalculator.Services
                 Shipping = shipping,
             };
 
-            var response = await _taxJarClient.CalculateOrderTax(request);
+            var response = await _taxJarClient.CalculateOrderTax(request)
+                .ConfigureAwait(false);
+
             return response.Tax.AmountToCollect;
         }
 
         public async Task<(string City, decimal Rate)> GetRateForZip(string zipCode)
         {
-            var result = await _taxJarClient.GetLocationTaxRate(zipCode);
+            var result = await _taxJarClient.GetLocationTaxRate(zipCode)
+                .ConfigureAwait(false);
+
             return (result.Rate.City, result.Rate.CombinedRate);
         }
     }

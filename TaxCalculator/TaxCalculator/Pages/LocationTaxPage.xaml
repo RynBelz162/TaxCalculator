@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:TaxCalculator.ViewModels"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    ios:Page.UseSafeArea="True"
+    x:Class="TaxCalculator.Pages.LocationTaxPage"
+    x:DataType="viewmodels:LocationTaxVm">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical">
+
+        <Frame Style="{StaticResource Card}">
+
+            <StackLayout>
+
+                <Label Text="Get the Tax Rate for a Location!"
+                       FontSize="Large" />
+
+                <Label Text="ZIP Code" />
+
+                <Entry Text="{Binding Zip}"
+                       MaxLength="5"
+                       ClearButtonVisibility="WhileEditing"
+                       Keyboard="Numeric"
+                       ReturnType="Search"/>
+
+                <Button Style="{StaticResource PrimaryButton}"
+                        Text="Get Rates"
+                        Command="{Binding GetTaxRateCommand}"
+                        IsVisible="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"/>
+
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                   Color="{StaticResource Primary}"
+                                   IsRunning="{Binding IsBusy}"/>
+
+            </StackLayout>
+
+        </Frame>
+
+        <StackLayout Orientation="Vertical" Margin="20, 0">
+
+            <Label Text="City" FontSize="Header" TextColor="{StaticResource Primary}" />
+            <Label Text="{Binding City}" FontSize="Medium" />
+
+            <Label Text="Tax Rate" FontSize="Header" TextColor="{StaticResource Primary}" />
+            <Label Text="{Binding Rate}" FontSize="Medium" />
+
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>

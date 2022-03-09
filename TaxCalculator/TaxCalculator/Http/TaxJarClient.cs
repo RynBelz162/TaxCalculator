@@ -47,7 +47,7 @@ namespace TaxCalculator.Http
         private StringContent CreateContent<T>(T content)
         {
             var myContent = JsonSerializer.Serialize(content, _jsonOptions);
-            return new StringContent(myContent, Encoding.UTF8, MediaTypeNames.Application.Json); 
+            return new StringContent(myContent, Encoding.UTF8, "application/json"); 
         }
     }
 }

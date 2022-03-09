@@ -137,8 +137,7 @@ namespace TaxCalculator.ViewModels
             try
             {
                 var amount = await _taxService
-                    .CalculateTaxForOrder(toState: ToState, toZip: ToZip, fromState: FromState, fromZip: FromZip, shipping: Shipping, amount: Amount)
-                    .ConfigureAwait(false);
+                    .CalculateTaxForOrder(toState: ToState, toZip: ToZip, fromState: FromState, fromZip: FromZip, shipping: Shipping, amount: Amount);
 
                 AmountToCollect = $"${amount}";
             }
