@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,7 +36,6 @@
     <None Remove="Models\" />
     <None Remove="Http\" />
     <None Remove="Microsoft.Extensions.Http" />
-    <None Remove="Models\TaxJar\" />
     <None Remove="System.Text.Json" />
     <None Remove="Microsoft.Extensions.Configuration.Json" />
     <None Remove="Microsoft.Extensions.Configuration" />
@@ -49,9 +50,6 @@
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Models\" />
-    <Folder Include="Http\" />
-    <Folder Include="Models\TaxJar\" />
     <Folder Include="Pages\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
@@ -59,6 +57,9 @@
   <ItemGroup>
     <EmbeddedResource Include="appsettings.json" />
     <EmbeddedResource Include="Resources\Fonts\fa-solid-900.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaxCalculator.Shared\TaxCalculator.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\MainPage.xaml.cs">

@@ -6,14 +6,14 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using TaxCalculator.Models.TaxJar;
+using TaxCalculator.Shared.Models.TaxJar;
 
-namespace TaxCalculator.Http
+namespace TaxCalculator.Shared.Http
 {
     public class TaxJarClient : ITaxJarClient
     {
         private readonly HttpClient _httpClient;
-        private JsonSerializerOptions _jsonOptions => new() { NumberHandling = JsonNumberHandling.AllowReadingFromString, PropertyNameCaseInsensitive = true };
+        private JsonSerializerOptions JsonOptions => new() { NumberHandling = JsonNumberHandling.AllowReadingFromString, PropertyNameCaseInsensitive = true };
 
         public TaxJarClient(HttpClient httpClient, TaxJarSettings taxJarSettings)
         {
@@ -30,7 +30,7 @@ namespace TaxCalculator.Http
 
             var rawResult = await httpRequest.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<TaxRateResult>(rawResult, _jsonOptions);
+            return JsonSerializer.Deserialize<TaxRateResult>(rawResult, JsonOptions);
         }
 
         public async Task<OrderResponse> CalculateOrderTax(OrderRequest request)
@@ -46,8 +46,8 @@ namespace TaxCalculator.Http
 
         private StringContent CreateContent<T>(T content)
         {
-            var myContent = JsonSerializer.Serialize(content, _jsonOptions);
-            return new StringContent(myContent, Encoding.UTF8, "application/json"); 
+            var myContent = JsonSerializer.Serialize(content, JsonOptions);
+            return new StringContent(myContent, Encoding.UTF8, MediaTypeNames.Application.Json); 
         }
     }
 }

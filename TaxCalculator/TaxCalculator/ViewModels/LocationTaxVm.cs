@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using MvvmHelpers;
 using TaxCalculator.Services;
+using TaxCalculator.Shared.Helpers;
+using TaxCalculator.Shared.Services;
 using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace TaxCalculator.ViewModels
@@ -52,7 +54,7 @@ namespace TaxCalculator.ViewModels
             _taxService = taxService;
             _alertService = alertService;
 
-            GetTaxRateCommand = new AsyncCommand(GetTaxRate, canExecute: () => CanGetZipTaxRate());
+            GetTaxRateCommand = new AsyncCommand(GetTaxRate, () => LocationHelper.IsValidZip(Zip));
 
             // Set default values to show
             City = "Unknown";
@@ -66,9 +68,7 @@ namespace TaxCalculator.ViewModels
             try
             {
                 var (city, rate) = await _taxService.GetRateForZip(_zip);
-
-                City = string.IsNullOrWhiteSpace(city) ? "Unknown" : city;
-                Rate = $"{rate * 100} %";
+                City = city;
             }
             catch
             {
@@ -79,8 +79,5 @@ namespace TaxCalculator.ViewModels
                 IsBusy = false;
             }
         }
-
-        public bool CanGetZipTaxRate() =>
-            !string.IsNullOrWhiteSpace(Zip) && Zip.Length == 5;
     }
 }

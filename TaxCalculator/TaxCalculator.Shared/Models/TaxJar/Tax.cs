@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace TaxCalculator.Models.TaxJar
+namespace TaxCalculator.Shared.Models.TaxJar
 {
     public record Tax
     {

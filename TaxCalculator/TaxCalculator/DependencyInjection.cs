@@ -2,9 +2,10 @@
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaxCalculator.Http;
-using TaxCalculator.Models.TaxJar;
 using TaxCalculator.Services;
+using TaxCalculator.Shared.Http;
+using TaxCalculator.Shared.Models.TaxJar;
+using TaxCalculator.Shared.Services;
 using TaxCalculator.ViewModels;
 
 namespace TaxCalculator

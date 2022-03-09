@@ -1,7 +1,8 @@
-﻿using System;
+﻿using MvvmHelpers;
 using System.Threading.Tasks;
-using MvvmHelpers;
 using TaxCalculator.Services;
+using TaxCalculator.Shared.Helpers;
+using TaxCalculator.Shared.Services;
 using Xamarin.CommunityToolkit.ObjectModel;
 
 namespace TaxCalculator.ViewModels
@@ -136,10 +137,8 @@ namespace TaxCalculator.ViewModels
 
             try
             {
-                var amount = await _taxService
+                AmountToCollect = await _taxService
                     .CalculateTaxForOrder(toState: ToState, toZip: ToZip, fromState: FromState, fromZip: FromZip, shipping: Shipping, amount: Amount);
-
-                AmountToCollect = $"${amount}";
             }
             catch
             {
@@ -152,11 +151,6 @@ namespace TaxCalculator.ViewModels
         }
 
         public bool CanCalculate() =>
-            _isValidAmount
-            && _isValidShipping
-            && !string.IsNullOrWhiteSpace(ToZip) && ToZip.Length == 5
-            && !string.IsNullOrWhiteSpace(FromZip) && FromZip.Length == 5
-            && !string.IsNullOrWhiteSpace(ToState)
-            && !string.IsNullOrWhiteSpace(FromState);
+            _isValidAmount && _isValidShipping && LocationHelper.IsValidLocation(toState: ToState, toZip: ToZip, fromState: FromState, fromZip: FromZip);
     }
 }

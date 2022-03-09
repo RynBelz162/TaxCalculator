@@ -129,7 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaxCalculator\TaxCalculator.csproj">
-      <Project>{B0AE66D6-E166-4890-8D8D-5CFB446856A8}</Project>
+      <Project>{b0ae66d6-e166-4890-8d8d-5cfb446856a8}</Project>
       <Name>TaxCalculator</Name>
     </ProjectReference>
   </ItemGroup>

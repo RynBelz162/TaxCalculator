@@ -1,4 +1,4 @@
-﻿namespace TaxCalculator.Models.TaxJar
+﻿namespace TaxCalculator.Shared.Models.TaxJar
 {
     public class TaxJarSettings
     {
