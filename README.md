@@ -2,6 +2,11 @@
 
 This Xamarin Forms app uses the TaxJar API to calculate the tax rate for a specified location and the tax to collect for an order.
 
+## ⚠️ Setting up TaxJar ⚠️
+To avoid checking in the ApiKey to source control it was excluded from `TaxCalculator/appsettings.json`.
+
+Please update the ApiKey setting inside of `TaxCalculator/appsettings.json` and replace `XXX` to properly authenticate to TaxJar.
+
 ### Things I would improve with more time
 - I would most likely add some form of local caching for location rates.
 - I would like to incorporate a nicer loading animation.
